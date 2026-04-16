@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  /* ── COVER ─────────────────────────────────────── */
+  .cover {
+    height: 100vh;
+    background: linear-gradient(145deg, #0d0d1a 0%, #1a1a3e 50%, #0d1b3e 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    page-break-after: always;
+    padding: 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 40%, rgba(77,150,255,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 70%, rgba(107,203,119,0.1) 0%, transparent 50%);
+  }
+  .cover-badge {
+    background: rgba(77,150,255,0.18);
+    border: 1px solid rgba(77,150,255,0.4);
+    color: #7ab8ff;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .cover h1 {
+    font-size: 26pt;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .cover h1 span { color: #4d96ff; }
+  .cover .subtitle {
+    font-size: 11.5pt;
+    color: #a0a8c0;
+    font-weight: 300;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .cover-divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #4d96ff, #6bcb77);
+    border-radius: 2px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex; gap: 30px;
+    position: relative;
+  }
+  .cover-meta-item {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 14px 22px;
+  }
+  .cover-meta-item .val {
+    font-size: 14pt;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+  .cover-meta-item .lbl {
+    font-size: 7pt;
+    color: #7a84a0;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .cover-footer {
+    position: absolute;
+    bottom: 30px;
+    font-size: 7.5pt;
+    color: #444d70;
+    letter-spacing: 1px;
+  }
+
+  /* ── LEGEND PAGE ────────────────────────────────── */
+  .legend-page {
+    padding: 36px 44px 24px;
+    page-break-after: always;
+  }
+  .page-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #e8eaf0;
+  }
+  .page-header-dot {
+    width: 10px; height: 38px;
+    border-radius: 4px;
+  }
+  .page-header h2 {
+    font-size: 14.5pt;
+    font-weight: 800;
+    color: #1a1a2e;
+    letter-spacing: -0.3px;
+  }
+  .page-header .sub {
+    font-size: 8.5pt;
+    color: #7a84a0;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  /* ── LEGEND TABLE ───────────────────────────────── */
+  .legend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 12px;
+    background: #f7f8fc;
+    border-radius: 8px;
+    padding: 10px 14px;
+    border-left: 4px solid;
+  }
+  .legend-item .icon { font-size: 15pt; line-height: 1; }
+  .legend-item .text strong { display: block; font-size: 9pt; font-weight: 700; }
+  .legend-item .text span { font-size: 8pt; color: #6b7280; }
+
+  /* ── SUBJECT SECTION ────────────────────────────── */
+  .subject-section {
+    padding: 32px 44px 28px;
+    page-break-before: always;
+  }
+  .subject-header {
+    margin-bottom: 18px;
+  }
+  .subject-tag {
+    display: inline-block;
+    font-size: 7pt; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .subject-title {
+    font-size: 16pt; font-weight: 800;
+    letter-spacing: -0.4px;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+  }
+  .subject-info {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 10px;
+  }
+  .info-chip {
+    background: #f0f2f8;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 7.5pt;
+    color: #4a5568;
+    font-weight: 500;
+  }
+  .info-chip strong { color: #1a1a2e; }
+
+  /* ── CRITERIA BOX ───────────────────────────────── */
+  .criteria-box {
+    background: #f7f8fc;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+  }
+  .criteria-title {
+    font-size: 8.5pt; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .criteria-grid {
+    display: grid;
+    gap: 6px;
+  }
+  .criteria-row {
+    display: flex; align-items: flex-start;
+    gap: 10px; font-size: 8.5pt;
+  }
+  .criteria-row .npc-badge {
+    min-width: 52px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 7.5pt; font-weight: 700;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .criteria-row .desc { color: #4a5568; line-height: 1.45; }
+  .formula-box {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px dashed #d0d5e8;
+    font-size: 8.5pt;
+    color: #1a1a2e;
+  }
+  .formula-box strong { color: #1a1a2e; }
+
+  /* ── EVALUATIONS TABLE ──────────────────────────── */
+  .eval-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    margin-top: 4px;
+  }
+  .eval-table thead tr {
+    border-bottom: 2px solid;
+  }
+  .eval-table thead th {
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
+  .eval-table tbody tr {
+    border-bottom: 1px solid #f0f2f8;
+  }
+  .eval-table tbody tr:last-child { border-bottom: none; }
+  .eval-table tbody td {
+    padding: 9px 10px;
+    vertical-align: top;
+  }
+  .eval-table tbody tr.done td { color: #9ca3af; }
+  .eval-table tbody tr.done .eval-name { text-decoration: line-through; }
+
+  .status-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+  .date-cell { white-space: nowrap; font-weight: 600; }
+  .npc-cell { white-space: nowrap; }
+  .npc-pill {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-size: 7.5pt;
+    font-weight: 700;
+  }
+  .content-cell { color: #374151; line-height: 1.45; }
+  .content-cell em { color: #ef4444; font-style: normal; font-weight: 600; font-size: 7.5pt; }
+
+  /* ── UNIFIED CALENDAR ───────────────────────────── */
+  .calendar-section {
+    padding: 32px 44px 28px;
+    page-break-before: always;
+  }
+  .month-header {
+    background: linear-gradient(90deg, #1a1a3e 0%, #0d1b3e 100%);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 18px 0 8px;
+  }
+  .uni-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    margin-bottom: 4px;
+  }
+  .uni-table thead tr {
+    background: #f0f2f8;
+  }
+  .uni-table thead th {
+    padding: 6px 10px;
+    text-align: left;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  .uni-table tbody tr { border-bottom: 1px solid #f3f4f6; }
+  .uni-table tbody tr:last-child { border-bottom: none; }
+  .uni-table tbody td { padding: 7px 10px; vertical-align: top; }
+  .uni-table tbody tr.done-row td { color: #b0b7c3; }
+  .uni-table tbody tr.done-row .uni-npc { text-decoration: line-through; }
+  .uni-table tbody tr.crit-row { background: #fff5f5; }
+  .uni-table tbody tr.nef-row { background: #fffbf0; }
+
+  .disc-tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 6.5pt;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── COLORS PER SUBJECT ─────────────────────────── */
+  /* AF1 */  .c-af1  { color: #4d96ff; }
+             .bg-af1 { background: #eef4ff; }
+             .bd-af1 { border-color: #4d96ff; }
+             .th-af1 { border-bottom-color: #4d96ff; }
+             .tag-af1 { background: #eef4ff; color: #4d96ff; }
+  /* PATO */ .c-pato  { color: #f97316; }
+             .bg-pato { background: #fff7ed; }
+             .bd-pato { border-color: #f97316; }
+             .th-pato { border-bottom-color: #f97316; }
+             .tag-pato { background: #fff7ed; color: #f97316; }
+  /* IMUNO*/ .c-imuno { color: #8b5cf6; }
+             .bg-imuno{ background: #f5f3ff; }
+             .bd-imuno{ border-color: #8b5cf6; }
+             .th-imuno{ border-bottom-color: #8b5cf6; }
+             .tag-imuno{ background: #f5f3ff; color: #8b5cf6; }
+  /* EPID */ .c-epid  { color: #10b981; }
+             .bg-epid { background: #ecfdf5; }
+             .bd-epid { border-color: #10b981; }
+             .th-epid { border-bottom-color: #10b981; }
+             .tag-epid { background: #ecfdf5; color: #10b981; }
+  /* EDUC */ .c-educ  { color: #e11d48; }
+             .bg-educ { background: #fff1f2; }
+             .bd-educ { border-color: #e11d48; }
+             .th-educ { border-bottom-color: #e11d48; }
+             .tag-educ { background: #fff1f2; color: #e11d48; }
+  /* RMP  */ .c-rmp   { color: #64748b; }
+             .bg-rmp  { background: #f8fafc; }
+             .bd-rmp  { border-color: #94a3b8; }
+             .th-rmp  { border-bottom-color: #94a3b8; }
+             .tag-rmp { background: #f1f5f9; color: #64748b; }
+
+  /* STATUS colors */
+  .dot-done    { background: #6bcb77; }
+  .dot-cancel  { background: #9ca3af; }
+  .dot-pending { background: #4d96ff; }
+  .dot-crit    { background: #ef4444; }
+  .dot-nef     { background: #f59e0b; }
+
+  .pill-done    { background: #dcfce7; color: #166534; }
+  .pill-cancel  { background: #f3f4f6; color: #6b7280; text-decoration: line-through; }
+  .pill-pending { background: #dbeafe; color: #1e40af; }
+  .pill-crit    { background: #fee2e2; color: #991b1b; }
+  .pill-nef     { background: #fef9c3; color: #854d0e; }
+
+  /* ── FOOTER ─────────────────────────────────────── */
+  .footer-bar {
+    background: #1a1a2e;
+    color: #6b7280;
+    text-align: center;
+    font-size: 7pt;
+    padding: 10px;
+    letter-spacing: 1px;
+    page-break-before: always;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     CAPA
+═══════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">UECE · MEDICINA 2026.1</div>
+  <h1>CALENDÁRIO DE<br><span>AVALIAÇÕES</span></h1>
+  <p class="subtitle">Todas as disciplinas · 2º Semestre · Turma 3º Verso</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="val">7</span>
+      <span class="lbl">Disciplinas</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="val">37</span>
+      <span class="lbl">Avaliações</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="val">09/07</span>
+      <span class="lbl">Término</span>
+    </div>
+  </div>
+  <div class="cover-footer">ATUALIZADO EM 15 DE ABRIL DE 2026 · CRONOGRAMA AF1 4ª REVISÃO</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LEGENDA
+═══════════════════════════════════════════════ -->
+<div class="legend-page">
+  <div class="page-header">
+    <div class="page-header-dot" style="background:linear-gradient(180deg,#4d96ff,#6bcb77);"></div>
+    <div>
+      <h2>COMO LER ESTE DOCUMENTO</h2>
+      <div class="sub">Legenda de status e disciplinas</div>
+    </div>
+  </div>
+
+  <div class="legend-grid">
+    <div class="legend-item" style="border-color:#6bcb77;">
+      <div class="icon">✅</div>
+      <div class="text">
+        <strong>Avaliação Realizada</strong>
+        <span>Já ocorreu. Aparece em cinza e tachado.</span>
+      </div>
+    </div>
+    <div class="legend-item" style="border-color:#9ca3af;">
+      <div class="icon">☑️</div>
+      <div class="text">
+        <strong>Cancelada / Redistribuída</strong>
+        <span>Conteúdo migrado para outra avaliação.</span>
+      </div>
+    </div>
+    <div class="legend-item" style="border-color:#4d96ff;">
+      <div class="icon">⬜</div>
+      <div class="text">
+        <strong>Avaliação Pendente</strong>
+        <span>Ainda não ocorreu. Fique atento.</span>
+      </div>
+    </div>
+    <div class="legend-item" style="border-color:#ef4444;">
+      <div class="icon">🔥</div>
+      <div class="text">
+        <strong>Semana / Dia Crítico</strong>
+        <span>Múltiplas avaliações no mesmo dia ou semana.</span>
+      </div>
+    </div>
+    <div class="legend-item" style="border-color:#f59e0b;">
+      <div class="icon">⚠️</div>
+      <div class="text">
+        <strong>Conteúdo Alterado</strong>
+        <span>Data ou escopo mudou em relação ao plano original.</span>
+      </div>
+    </div>
+    <div class="legend-item" style="border-color:#f59e0b;">
+      <div class="icon">📋</div>
+      <div class="text">
+        <strong>NEF</strong>
+        <span>Nota de Exame Final — apenas para quem ficou abaixo de 7,0.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- color chips por disciplina -->
+  <table style="width:100%;border-collapse:collapse;margin-top:10px;">
+    <thead>
+      <tr style="background:#f0f2f8;">
+        <th style="padding:7px 12px;text-align:left;font-size:7.5pt;color:#6b7280;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e5e7eb;">Disciplina</th>
+        <th style="padding:7px 12px;text-align:left;font-size:7.5pt;color:#6b7280;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e5e7eb;">Código</th>
+        <th style="padding:7px 12px;text-align:left;font-size:7.5pt;color:#6b7280;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e5e7eb;">Professor(a)</th>
+        <th style="padding:7px 12px;text-align:left;font-size:7.5pt;color:#6b7280;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e5e7eb;">Dia</th>
+        <th style="padding:7px 12px;text-align:left;font-size:7.5pt;color:#6b7280;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #e5e7eb;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #f3f4f6;">
+        <td style="padding:8px 12px;"><span class="disc-tag tag-af1">ANATOMOFISIOLOGIA I</span></td>
+        <td style="padding:8px 12px;font-size:8pt;">MF015</td>
+        <td style="padding:8px 12px;font-size:8pt;">Calado · Clielder · Claudia · Gerson</td>
+        <td style="padding:8px 12px;font-size:8pt;">Seg – Qui</td>
+        <td style="padding:8px 12px;"><span class="npc-pill pill-pending" style="font-size:7pt;">EM CURSO</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f3f4f6;">
+        <td style="padding:8px 12px;"><span class="disc-tag tag-pato">PATOLOGIA GERAL</span></td>
+        <td style="padding:8px 12px;font-size:8pt;">—</td>
+        <td style="padding:8px 12px;font-size:8pt;">Profa. Herlice Veras</td>
+        <td style="padding:8px 12px;font-size:8pt;">Sexta</td>
+        <td style="padding:8px 12px;"><span class="npc-pill pill-pending" style="font-size:7pt;">EM CURSO</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f3f4f6;">
+        <td style="padding:8px 12px;"><span class="disc-tag tag-imuno">IMUNOLOGIA BÁSICA</span></td>
+        <td style="padding:8px 12px;font-size:8pt;">—</td>
+        <td style="padding:8px 12px;font-size:8pt;">Profa. Morgana Oliveira</td>
+        <td style="padding:8px 12px;font-size:8pt;">Quinta</td>
+        <td style="padding:8px 12px;"><span class="npc-pill pill-pending" style="font-size:7pt;">EM CURSO</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f3f4f6;">
+        <td style="padding:8px 12px;"><span class="disc-tag tag-epid">EPIDEMIOLOGIA</span></td>
+        <td style="padding:8px 12px;font-size:8pt;">1894</td>
+        <td style="padding:8px 12px;font-size:8pt;">Fernando Virgílio · Eddie William</td>
+        <td style="padding:8px 12px;font-size:8pt;">Segunda</td>
+        <td style="padding:8px 12px;"><span class="npc-pill pill-pending" style="font-size:7pt;">EM CURSO</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #f3f4f6;">
+        <td style="padding:8px 12px;"><span class="disc-tag tag-educ">EDUCAÇÃO EM SAÚDE</span></td>
+        <td style="padding:8px 12px;font-size:8pt;">MF012</td>
+        <td style="padding:8px 12px;font-size:8pt;">Prof. Rafael Bezerra Duarte</td>
+        <td style="padding:8px 12px;font-size:8pt;">Sexta (manhã)</td>
+        <td style="padding:8px 12px;"><span class="npc-pill pill-pending" style="font-size:7pt;">EM CURSO</span></td>
+      </tr>
+      <tr>
+        <td style="padding:8px 12px;"><span class="disc-tag tag-rmp">REL. MÉDICO-PACIENTE</span></td>
+        <td style="padding:8px 12px;font-size:8pt;">MF014</td>
+        <td style="padding:8px 12px;font-size:8pt;">Profa. Andrea Caprara</td>
+        <td style="padding:8px 12px;font-size:8pt;">Terça</td>
+        <td style="padding:8px 12px;"><span class="npc-pill pill-done" style="font-size:7pt;">CONCLUÍDA</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     ANATOMOFISIOLOGIA I
+═══════════════════════════════════════════════ -->
+<div class="subject-section">
+  <div class="subject-header">
+    <div class="subject-tag tag-af1">MF015 · 16 CRÉDITOS</div>
+    <div class="subject-title c-af1">ANATOMOFISIOLOGIA I</div>
+    <div class="subject-info">
+      <span class="info-chip"><strong>Coordenadora:</strong> Profa. Crystianne Calado</span>
+      <span class="info-chip"><strong>Fisiologia:</strong> Profs. Clielder Rebouças e Denner Silvino</span>
+      <span class="info-chip"><strong>Bioquímica:</strong> Profa. Claudia Santos</span>
+      <span class="info-chip"><strong>Anatomia:</strong> Prof. Gerson Abreu</span>
+      <span class="info-chip"><strong>Sala:</strong> 4 · Seg–Qui, manhã/tarde</span>
+    </div>
+  </div>
+
+  <div class="criteria-box bd-af1 bg-af1">
+    <div class="criteria-title c-af1">📊 CRITÉRIOS DE AVALIAÇÃO</div>
+    <div class="criteria-grid">
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#eef4ff;color:#4d96ff;">FISIOLOGIA</div>
+        <div class="desc">5 NPCs ao longo do semestre. Aprovado com média ≥ 7,0. II Chamada disponível. NEF para quem não atingir média.</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#eef4ff;color:#4d96ff;">BIOQUÍMICA</div>
+        <div class="desc">3 NPCs (sendo o 1º CANCELADO — conteúdo incorporado ao 2º NPC). Aprovado com média ≥ 7,0.</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#eef4ff;color:#4d96ff;">ANATOMIA</div>
+        <div class="desc">4 NPCs (3 teóricas + 1 prática). Aprovado com média ≥ 7,0. II Chamada disponível.</div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <strong>Aprovação:</strong> Média das NPCs ≥ 7,0 em cada subárea separadamente (Fisiologia, Bioquímica e Anatomia) · Faltas: máx. 25% da CH
+    </div>
+  </div>
+
+  <!-- FISIOLOGIA TABLE -->
+  <p style="font-size:8.5pt;font-weight:700;color:#4d96ff;letter-spacing:1px;text-transform:uppercase;margin:16px 0 6px;">FISIOLOGIA</p>
+  <table class="eval-table">
+    <thead>
+      <tr class="th-af1">
+        <th style="width:90px;">Data</th>
+        <th style="width:80px;">Avaliação</th>
+        <th>Conteúdo Cobrado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="done">
+        <td class="date-cell"><span class="status-dot dot-done"></span>24/03 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-done">1º NPC</span></td>
+        <td class="content-cell">Biofísica de membrana · Potencial de membrana e de ação · Transmissão sináptica neural e muscular · Sistemas de neurotransmissão</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-crit"></span><strong>27/04 Seg</strong></td>
+        <td class="npc-cell"><span class="npc-pill pill-crit">2º NPC 🔥</span></td>
+        <td class="content-cell"><strong>Slot AB — manhã.</strong> Contração muscular: mecanismo molecular, tipos (esquelético, cardíaco e liso), acoplamento excitação-contração, tétano e fadiga</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-crit"></span><strong>27/04 Seg</strong></td>
+        <td class="npc-cell"><span class="npc-pill pill-crit">3º NPC 🔥</span></td>
+        <td class="content-cell"><strong>Slot CD — tarde.</strong> SN Autônomo (simpático/parassimpático) · Fisiologia Sensorial I: somatossensorial, dor · Fisiologia Sensorial II: visão, audição, equilíbrio, olfato, paladar</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>18/05 Seg</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">4º NPC</span></td>
+        <td class="content-cell">Motricidade: reflexos medulares (arco reflexo, miotático, Golgi) · Reflexos vestibulares · Integração sensomotora</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>24/06 Qua</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">5º NPC</span></td>
+        <td class="content-cell">Sistema endócrino: eixo hipotálamo-hipófise · Pineal · Adrenal (cortisol, aldosterona) · Pâncreas endócrino · Fisiologia gonadal masculina e feminina</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- BIOQUÍMICA TABLE -->
+  <p style="font-size:8.5pt;font-weight:700;color:#4d96ff;letter-spacing:1px;text-transform:uppercase;margin:16px 0 6px;">BIOQUÍMICA</p>
+  <table class="eval-table">
+    <thead>
+      <tr class="th-af1">
+        <th style="width:90px;">Data</th>
+        <th style="width:80px;">Avaliação</th>
+        <th>Conteúdo Cobrado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="done">
+        <td class="date-cell"><span class="status-dot dot-cancel"></span>23/03 Seg</td>
+        <td class="npc-cell"><span class="npc-pill pill-cancel">CANCELADO</span></td>
+        <td class="content-cell" style="text-decoration:line-through;">Enzimas (cinética, inibição, coenzimas) · Hemoglobina e Mioglobina — conteúdo migrado para o 2º NPC</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-crit"></span><strong>30/04 Qui</strong></td>
+        <td class="npc-cell"><span class="npc-pill pill-crit">2º NPC ⚠️🔥</span></td>
+        <td class="content-cell"><strong>CONTEÚDO EXPANDIDO:</strong> Enzimas (cinética, Km, Vmax, inibição) · Hemoglobina e Mioglobina (curva de dissociação, efeito Bohr) · Carboidratos (glicólise, glicogênio, gliconeogênese) · Ciclo de Krebs · CTE e estresse oxidativo</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>28/05 Qui</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">3º NPC</span></td>
+        <td class="content-cell">Metabolismo de lipídeos (β-oxidação, síntese de AG, corpos cetônicos) · Metabolismo de aminoácidos, proteínas e compostos nitrogenados (ciclo da ureia, transaminação)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ANATOMIA TABLE -->
+  <p style="font-size:8.5pt;font-weight:700;color:#4d96ff;letter-spacing:1px;text-transform:uppercase;margin:16px 0 6px;">ANATOMIA</p>
+  <table class="eval-table">
+    <thead>
+      <tr class="th-af1">
+        <th style="width:90px;">Data</th>
+        <th style="width:80px;">Avaliação</th>
+        <th>Conteúdo Cobrado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="done">
+        <td class="date-cell"><span class="status-dot dot-done"></span>14/04 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-done">1º NPC</span></td>
+        <td class="content-cell">Medula espinal: tratos, fascículos, lâminas de Rexed · Tronco encefálico: bulbo, ponte, mesencéfalo · Córtex cerebral: áreas funcionais e lobos</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>19/05 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">2º NPC</span></td>
+        <td class="content-cell">SNP: nervos cranianos e espinais, plexos · Sistema límbico: hipocampo, amígdala, circuito de Papez · Arquitetura geral do encéfalo</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>16/06 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">3º NPC</span></td>
+        <td class="content-cell">Sistema endócrino: topografia e anatomia descritiva das glândulas (hipófise, tireoide, paratireoide, adrenal, pâncreas, gônadas, pineal)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>23/06 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">4º NPC 🔪</span></td>
+        <td class="content-cell"><strong>Prática.</strong> Peças anatômicas e lâminas do sistema endócrino · Estesiologia (órgãos dos sentidos especiais)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PATOLOGIA
+═══════════════════════════════════════════════ -->
+<div class="subject-section">
+  <div class="subject-header">
+    <div class="subject-tag tag-pato">PATOLOGIA GERAL · 4 CRÉDITOS · 68h</div>
+    <div class="subject-title c-pato">PATOLOGIA GERAL</div>
+    <div class="subject-info">
+      <span class="info-chip"><strong>Coordenadora:</strong> Profa. Dra. Herlice do Nascimento Veras</span>
+      <span class="info-chip"><strong>Local:</strong> Sala 4, ISCB – Itaperi</span>
+      <span class="info-chip"><strong>Dia:</strong> Sextas-feiras, tarde</span>
+    </div>
+  </div>
+
+  <div class="criteria-box bd-pato bg-pato">
+    <div class="criteria-title c-pato">📊 CRITÉRIOS DE AVALIAÇÃO</div>
+    <div class="criteria-grid">
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#fff7ed;color:#f97316;">NPC1</div>
+        <div class="desc">Prova formal escrita sobre Patologia Celular (adaptação, lesão, morte, acúmulos).</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#fff7ed;color:#f97316;">NPC2</div>
+        <div class="desc">Prova formal escrita: Inflamação, Reparo Celular, Neoplasias I e II, Distúrbios Hemodinâmicos I.</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#fff7ed;color:#f97316;">NPC3</div>
+        <div class="desc">Composição por seminários (2 apresentações): Neoplasia III (05/06) e Distúrbios Hemodinâmicos II (19/06).</div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <strong>Média Final</strong> = (NPC1 + NPC2 + NPC3) ÷ 3 ≥ 7,0 · 2ª chamada: requerimento em 3 dias úteis · NEF: 03/07/2026
+    </div>
+  </div>
+
+  <table class="eval-table">
+    <thead>
+      <tr class="th-pato">
+        <th style="width:90px;">Data</th>
+        <th style="width:80px;">Avaliação</th>
+        <th>Conteúdo Cobrado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span><strong>24/04 Sex</strong></td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NPC1</span></td>
+        <td class="content-cell">Adaptações celulares (hipertrofia, hiperplasia, atrofia, metaplasia, displasia) · Lesão celular reversível e irreversível · Acúmulos intracelulares (lipídeos, glicogênio, pigmentos) · Necrose (coagulativa, liquefativa, caseosa) · Apoptose</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>05/06 Sex</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">Sem. NPC3</span></td>
+        <td class="content-cell">Neoplasia III: angiogênese tumoral · invasão local e metástase · aspectos clínicos (síndrome paraneoplásica, estadiamento, grau histológico)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>19/06 Sex</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">Sem. NPC3</span></td>
+        <td class="content-cell">Distúrbios hemodinâmicos II: êmbolo (tipos e consequências) · infarto (tipos e morfologia) · choque (fisiopatologia e classificação)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-crit"></span><strong>26/06 Sex</strong></td>
+        <td class="npc-cell"><span class="npc-pill pill-crit">NPC2 🔥</span></td>
+        <td class="content-cell">Inflamação aguda (fases, mediadores) e crônica (granulomatosa) · Reparo celular e regeneração · Neoplasias I e II (nomenclatura, bases moleculares, oncogenes, supressores tumorais) · Distúrbios hemodinâmicos I (edema, hiperemia, hemorragia, trombose)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     IMUNOLOGIA
+═══════════════════════════════════════════════ -->
+<div class="subject-section">
+  <div class="subject-header">
+    <div class="subject-tag tag-imuno">IMUNOLOGIA BÁSICA · 4 CRÉDITOS</div>
+    <div class="subject-title c-imuno">IMUNOLOGIA BÁSICA</div>
+    <div class="subject-info">
+      <span class="info-chip"><strong>Coordenadora:</strong> Profa. Dra. Morgana Oliveira</span>
+      <span class="info-chip"><strong>Local:</strong> Sala 01, Bloco G – Itaperi</span>
+      <span class="info-chip"><strong>Dia:</strong> Quintas-feiras, tarde</span>
+    </div>
+  </div>
+
+  <div class="criteria-box bd-imuno bg-imuno">
+    <div class="criteria-title c-imuno">📊 CRITÉRIOS DE AVALIAÇÃO</div>
+    <div class="criteria-grid">
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#f5f3ff;color:#8b5cf6;">NP1</div>
+        <div class="desc">Prova escrita formal — conteúdo de imunidade inata, adaptativa e anticorpos (07/05).</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#f5f3ff;color:#8b5cf6;">NPC2</div>
+        <div class="desc">Composição por seminários (5 apresentações ao longo de maio e junho): Imunodeficiências, Autoimunidade, Transplantes, Tumores, Hipersensibilidade e Imunoprofilaxia.</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#f5f3ff;color:#8b5cf6;">NP2</div>
+        <div class="desc">Prova escrita formal — todo o conteúdo pós-NP1 (02/07).</div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <strong>Média Final</strong> = (NP1 + NPC2 + NP2) ÷ 3 ≥ 7,0 · NEF: 09/07/2026
+    </div>
+  </div>
+
+  <table class="eval-table">
+    <thead>
+      <tr class="th-imuno">
+        <th style="width:90px;">Data</th>
+        <th style="width:90px;">Avaliação</th>
+        <th>Conteúdo Cobrado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>07/05 Qui</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NP1 — Prova</span></td>
+        <td class="content-cell">Introdução ao SI (inata vs. adaptativa) · Órgãos linfoides primários/secundários · Recirculação linfocitária · <strong>Imunidade Inata:</strong> PAMPs, DAMPs, TLRs, complemento, NK · <strong>Imunidade Adaptativa:</strong> MHC I/II, ativação Linfócito T (Th1, Th2, Th17, Treg, CTL) · <strong>Anticorpos:</strong> estrutura, classes, mudança isotípica</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>21/05 Qui</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">Sem. (NPC2)</span></td>
+        <td class="content-cell"><strong>Imunodeficiências</strong> primárias (Bruton, SCID, DiGeorge) e secundárias (HIV/AIDS) · <strong>Autoimunidade:</strong> quebra de tolerância, LES, AR, DM tipo 1</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>28/05 Qui</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">Sem. (NPC2)</span></td>
+        <td class="content-cell"><strong>Imunologia dos Transplantes:</strong> reconhecimento aloantigênico, rejeição hiperaguda/aguda/crônica, tolerância e imunossupressão</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>11/06 Sex</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">Sem. (NPC2)</span></td>
+        <td class="content-cell"><strong>Imunologia dos Tumores:</strong> imunovigilância, mecanismos de evasão, imunoterapia (checkpoint inhibitors, CAR-T)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>18/06 Qui</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">Sem. (NPC2)</span></td>
+        <td class="content-cell"><strong>Hipersensibilidade:</strong> Tipo I (IgE/mastócito — anafilaxia, atopia) · Tipo II (citotóxica) · Tipo III (imunocomplexos) · Tipo IV (celular retardada — PPD, dermatite)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>25/06 Qui</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">Sem. (NPC2)</span></td>
+        <td class="content-cell"><strong>Imunoprofilaxia:</strong> soros (antitoxinas, antivenenos) · vacinas (tipos, mecanismo de ação, PNI brasileiro, adjuvantes)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>02/07 Qui</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NP2 — Final</span></td>
+        <td class="content-cell">Todo o conteúdo pós-NP1: Tolerância imunológica · Transplantes · Tumores · Hipersensibilidade tipos I–IV · Imunoprofilaxia · Imunodeficiências · Autoimunidade</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     EPIDEMIOLOGIA
+═══════════════════════════════════════════════ -->
+<div class="subject-section">
+  <div class="subject-header">
+    <div class="subject-tag tag-epid">EPIDEMIOLOGIA · CÓD. 1894 · 68h</div>
+    <div class="subject-title c-epid">EPIDEMIOLOGIA</div>
+    <div class="subject-info">
+      <span class="info-chip"><strong>Professores:</strong> Fernando Virgílio · Eddie William</span>
+      <span class="info-chip"><strong>Dia:</strong> Segundas-feiras · 4ABCD</span>
+    </div>
+  </div>
+
+  <div class="criteria-box bd-epid bg-epid">
+    <div class="criteria-title c-epid">📊 CRITÉRIOS DE AVALIAÇÃO</div>
+    <div class="criteria-grid">
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#ecfdf5;color:#10b981;">NPC1 — 40%</div>
+        <div class="desc">Seminário em equipe: apresentação temática sobre agravos prevalentes (tema definido pelo professor).</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#ecfdf5;color:#10b981;">NPC2 — 30%</div>
+        <div class="desc">Prova teórica escrita (objetiva e/ou discursiva): epidemiologia descritiva, metodologia e vigilância em saúde.</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#ecfdf5;color:#10b981;">NPC3 — 30%</div>
+        <div class="desc">Trabalho escrito final ou projeto aplicado sobre tema epidemiológico (entrega 22/06).</div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <strong>Nota Final</strong> = Provas Teóricas (40%) + Seminários (30%) + Trabalho Final (30%) ≥ 7,0 · NEF: 29/06/2026
+    </div>
+  </div>
+
+  <table class="eval-table">
+    <thead>
+      <tr class="th-epid">
+        <th style="width:90px;">Data</th>
+        <th style="width:80px;">Avaliação</th>
+        <th>Conteúdo / Atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>04/05 Seg</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NPC1</span></td>
+        <td class="content-cell">Apresentação de seminário em equipe sobre tema de agravo prevalente (tema e grupos definidos pelo professor)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>15/06 Seg</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NPC2 — Prova</span></td>
+        <td class="content-cell">Epidemiologia descritiva (pessoa, tempo, lugar) · Metodologia: coorte, caso-controle, transversal, experimental · Vigilância epidemiológica e sanitária · Quantificação em epidemiologia · Indicadores de saúde e epidemiológicos</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>22/06 Seg</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NPC3 — Entrega</span></td>
+        <td class="content-cell">Entrega do trabalho escrito final ou projeto aplicado. Formato e tema conforme orientação do professor.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     EDUCAÇÃO EM SAÚDE
+═══════════════════════════════════════════════ -->
+<div class="subject-section">
+  <div class="subject-header">
+    <div class="subject-tag tag-educ">MF012 · 4 CRÉDITOS · 68h (incl. 12h extensão)</div>
+    <div class="subject-title c-educ">EDUCAÇÃO EM SAÚDE</div>
+    <div class="subject-info">
+      <span class="info-chip"><strong>Professor:</strong> Prof. Me. Rafael Bezerra Duarte</span>
+      <span class="info-chip"><strong>Dia:</strong> Sextas-feiras, manhã · Sala 04</span>
+    </div>
+  </div>
+
+  <div class="criteria-box bd-educ bg-educ">
+    <div class="criteria-title c-educ">📊 CRITÉRIOS DE AVALIAÇÃO</div>
+    <div class="criteria-grid">
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#fff1f2;color:#e11d48;">NPC1 ✅</div>
+        <div class="desc">Assiduidade/pontualidade (1,0 pt) + Atividades individuais ou em grupo (3,0 pts) + <strong>Plano de ação educativa — avaliação prática</strong> (6,0 pts) = 10 pts. <em>Realizado em 10/04.</em></div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#fff1f2;color:#e11d48;">NPC2</div>
+        <div class="desc">Assiduidade/pontualidade (1,0 pt) + Atividades individuais ou em grupo (3,0 pts) + <strong>Seminários — simulação de práticas de educação em saúde</strong> (6,0 pts) = 10 pts.</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#fff1f2;color:#e11d48;">NPC3</div>
+        <div class="desc">Assiduidade (1,0) + <strong>Participação nas ações extensionistas</strong> (3,0) + <strong>Elaboração de material didático/educativo</strong> (3,0) + Avaliação das visitas pelo professor (1,0) + Autoavaliação (2,0) = 10 pts.</div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <strong>Média Final</strong> = (NPC1 + NPC2 + NPC3) ÷ 3 ≥ 7,0 · Faltas: máx. 17h/a (25%) · NEF: 03/07/2026
+    </div>
+  </div>
+
+  <table class="eval-table">
+    <thead>
+      <tr class="th-educ">
+        <th style="width:90px;">Data</th>
+        <th style="width:90px;">Avaliação</th>
+        <th>Atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="done">
+        <td class="date-cell"><span class="status-dot dot-done"></span>10/04 Sex</td>
+        <td class="npc-cell"><span class="npc-pill pill-done">NPC1 ✅</span></td>
+        <td class="content-cell">Desenvolvimento em grupo de um <strong>plano de ação educativa</strong> + oficina preparatória para os seminários e intervenção educativa</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>29/05 Sex</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NPC2</span></td>
+        <td class="content-cell"><strong>Seminários — simulação de práticas de educação em saúde.</strong> Cada grupo apresenta uma intervenção educativa simulada com metodologia ativa (tema e formato definidos previamente)</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>30/05 Sáb</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NPC3 Ext.1</span></td>
+        <td class="content-cell"><strong>Atividade extensionista 1.</strong> Ação de educação em saúde em territórios da comunidade (ILPI, praças, shopping, ONGs). Usar material didático elaborado pelo grupo.</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-pending"></span>12/06 Sex</td>
+        <td class="npc-cell"><span class="npc-pill pill-pending">NPC3 Ext.2</span></td>
+        <td class="content-cell"><strong>Atividade extensionista 2.</strong> Ação no ambiente escolar — seguindo o Programa Saúde na Escola (PSE). Orientar alunos sobre temas de saúde alinhados à realidade do território.</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-crit"></span><strong>26/06 Sex</strong></td>
+        <td class="npc-cell"><span class="npc-pill pill-crit">NPC3 Ext.3 🔥</span></td>
+        <td class="content-cell"><strong>Atividade extensionista 3.</strong> Ação em Unidades de Atenção Primária à Saúde (UAPS). Orientação à população com base na realidade epidemiológica do território.</td>
+      </tr>
+      <tr>
+        <td class="date-cell"><span class="status-dot dot-nef"></span>03/07 Sex</td>
+        <td class="npc-cell"><span class="npc-pill pill-nef">Relatórios + NEF</span></td>
+        <td class="content-cell">Socialização dos relatórios das ações extensionistas · NEF para quem não atingiu média · Encerramento da disciplina</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     RMP — ENCERRADA
+═══════════════════════════════════════════════ -->
+<div class="subject-section">
+  <div class="subject-header">
+    <div class="subject-tag tag-rmp">MF014 · 2 CRÉDITOS · 32h · DISCIPLINA ENCERRADA</div>
+    <div class="subject-title c-rmp">RELAÇÃO MÉDICO-PACIENTE E FAMÍLIA</div>
+    <div class="subject-info">
+      <span class="info-chip"><strong>Professora:</strong> Andrea Caprara</span>
+      <span class="info-chip"><strong>Encerrada:</strong> 14/04/2026</span>
+      <span class="info-chip"><strong>Status:</strong> Aguardar lançamento de notas</span>
+    </div>
+  </div>
+
+  <div class="criteria-box bd-rmp bg-rmp">
+    <div class="criteria-title c-rmp">📊 CRITÉRIOS DE AVALIAÇÃO</div>
+    <div class="criteria-grid">
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#f1f5f9;color:#64748b;">Prova (50%)</div>
+        <div class="desc">Prova parcial escrita (questões objetivas e/ou discursivas) — conteúdo das aulas 1 a 4.</div>
+      </div>
+      <div class="criteria-row">
+        <div class="npc-pill npc-badge" style="background:#f1f5f9;color:#64748b;">Seminários (50%)</div>
+        <div class="desc">5 seminários temáticos apresentados em plenária: Crianças, Adolescentes, Adultos, Idosos e Família.</div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <strong>Nota Final</strong> = Prova Parcial (50%) + Seminários (50%) ≥ 7,0 · Avaliação processual e contínua
+    </div>
+  </div>
+
+  <table class="eval-table">
+    <thead>
+      <tr class="th-rmp">
+        <th style="width:90px;">Data</th>
+        <th style="width:80px;">Avaliação</th>
+        <th>Conteúdo Cobrado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="done">
+        <td class="date-cell"><span class="status-dot dot-done"></span>24/03 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-done">Prova (50%)</span></td>
+        <td class="content-cell">Medicina centrada na pessoa · Habilidades de comunicação médico-paciente · Habilidades de escuta · Estrutura da consulta · Comunicação de má notícia e protocolo SPIKES · Role Play</td>
+      </tr>
+      <tr class="done">
+        <td class="date-cell"><span class="status-dot dot-done"></span>31/03 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-done">Sem. 1,2,3 (50%)</span></td>
+        <td class="content-cell">Habilidades de comunicação na consulta com: Crianças · Adolescentes · Adultos</td>
+      </tr>
+      <tr class="done">
+        <td class="date-cell"><span class="status-dot dot-done"></span>07/04 Ter</td>
+        <td class="npc-cell"><span class="npc-pill pill-done">Sem. 4,5 (50%)</span></td>
+        <td class="content-cell">Habilidades de comunicação na consulta com: Idosos · Família e aspectos de interação médico-família</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CALENDÁRIO UNIFICADO
+═══════════════════════════════════════════════ -->
+<div class="calendar-section">
+  <div class="page-header">
+    <div class="page-header-dot" style="background:linear-gradient(180deg,#1a1a3e,#4d96ff);"></div>
+    <div>
+      <h2>CALENDÁRIO UNIFICADO</h2>
+      <div class="sub">Todas as avaliações · Ordem cronológica · Mar–Jul 2026</div>
+    </div>
+  </div>
+
+  <div class="month-header">MARÇO / ABRIL 2026</div>
+  <table class="uni-table">
+    <thead>
+      <tr>
+        <th style="width:80px;">Data</th>
+        <th style="width:30px;"></th>
+        <th style="width:110px;">Disciplina</th>
+        <th style="width:110px;">Avaliação</th>
+        <th>Conteúdo Principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="done-row">
+        <td>23/03 Seg</td><td>☑️</td>
+        <td><span class="disc-tag tag-af1">AF1 BIO</span></td>
+        <td class="uni-npc">1º NPC CANC.</td>
+        <td>Enzimas + Globinas — <em>migrado para 2º NPC</em></td>
+      </tr>
+      <tr class="done-row">
+        <td>24/03 Ter</td><td>✅</td>
+        <td><span class="disc-tag tag-af1">AF1 FISIO</span></td>
+        <td class="uni-npc">1º NPC</td>
+        <td>Biofísica · Transmissão Sináptica · Neurotransmissores</td>
+      </tr>
+      <tr class="done-row">
+        <td>24/03 Ter</td><td>✅</td>
+        <td><span class="disc-tag tag-rmp">RMP</span></td>
+        <td class="uni-npc">Prova Parcial</td>
+        <td>Medicina centrada na pessoa · SPIKES · Estrutura da consulta</td>
+      </tr>
+      <tr class="done-row">
+        <td>31/03 Ter</td><td>✅</td>
+        <td><span class="disc-tag tag-rmp">RMP</span></td>
+        <td class="uni-npc">Seminários 1,2,3</td>
+        <td>Consulta com Crianças · Adolescentes · Adultos</td>
+      </tr>
+      <tr class="done-row">
+        <td>07/04 Ter</td><td>✅</td>
+        <td><span class="disc-tag tag-rmp">RMP</span></td>
+        <td class="uni-npc">Seminários 4,5</td>
+        <td>Consulta com Idosos · Família</td>
+      </tr>
+      <tr class="done-row">
+        <td>10/04 Sex</td><td>✅</td>
+        <td><span class="disc-tag tag-educ">ED. SAÚDE</span></td>
+        <td class="uni-npc">NPC1 Prática</td>
+        <td>Plano de ação educativa em grupo</td>
+      </tr>
+      <tr class="done-row">
+        <td>14/04 Ter</td><td>✅</td>
+        <td><span class="disc-tag tag-af1">AF1 ANAT</span></td>
+        <td class="uni-npc">1º NPC Teórica</td>
+        <td>Medula · Tronco Encefálico · Córtex</td>
+      </tr>
+      <tr>
+        <td><strong>24/04 Sex</strong></td><td>⬜</td>
+        <td><span class="disc-tag tag-pato">PATOLOGIA</span></td>
+        <td><strong>NPC1</strong></td>
+        <td>Patologia celular completa</td>
+      </tr>
+      <tr class="crit-row">
+        <td><strong>27/04 Seg</strong></td><td>🔥</td>
+        <td><span class="disc-tag tag-af1">AF1 FISIO</span></td>
+        <td><strong>2º NPC [AB]</strong></td>
+        <td>Contração Muscular</td>
+      </tr>
+      <tr class="crit-row">
+        <td><strong>27/04 Seg</strong></td><td>🔥</td>
+        <td><span class="disc-tag tag-af1">AF1 FISIO</span></td>
+        <td><strong>3º NPC [CD]</strong></td>
+        <td>SNA + Fisiologia Sensorial</td>
+      </tr>
+      <tr class="crit-row">
+        <td><strong>30/04 Qui</strong></td><td>⚠️🔥</td>
+        <td><span class="disc-tag tag-af1">AF1 BIO</span></td>
+        <td><strong>2º NPC EXPANDIDO</strong></td>
+        <td>Enzimas + Globinas + Carboidratos + Krebs + CTE</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="month-header">MAIO 2026</div>
+  <table class="uni-table">
+    <thead>
+      <tr>
+        <th style="width:80px;">Data</th>
+        <th style="width:30px;"></th>
+        <th style="width:110px;">Disciplina</th>
+        <th style="width:110px;">Avaliação</th>
+        <th>Conteúdo Principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>04/05 Seg</td><td>⬜</td><td><span class="disc-tag tag-epid">EPIDEMIO</span></td><td>NPC1 — Seminário</td><td>Apresentação em equipe</td></tr>
+      <tr><td>07/05 Qui</td><td>⬜</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>NP1 — Prova</td><td>SI · Inata · Adaptativa · Anticorpos</td></tr>
+      <tr><td>18/05 Seg</td><td>⬜</td><td><span class="disc-tag tag-af1">AF1 FISIO</span></td><td>4º NPC</td><td>Motricidade</td></tr>
+      <tr><td>19/05 Ter</td><td>⬜</td><td><span class="disc-tag tag-af1">AF1 ANAT</span></td><td>2º NPC Teórica</td><td>Sistema Nervoso</td></tr>
+      <tr><td>21/05 Qui</td><td>⬜</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>Seminário (NPC2)</td><td>Imunodeficiências · Autoimunidade</td></tr>
+      <tr class="crit-row"><td><strong>28/05 Qui</strong></td><td>🔥</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>Seminário (NPC2)</td><td>Transplantes</td></tr>
+      <tr class="crit-row"><td><strong>28/05 Qui</strong></td><td>🔥</td><td><span class="disc-tag tag-af1">AF1 BIO</span></td><td>3º NPC</td><td>Lipídeos · Aminoácidos</td></tr>
+      <tr><td>29/05 Sex</td><td>⬜</td><td><span class="disc-tag tag-educ">ED. SAÚDE</span></td><td>NPC2 — Seminários</td><td>Simulação de práticas de ed. saúde</td></tr>
+      <tr><td>30/05 Sáb</td><td>⬜</td><td><span class="disc-tag tag-educ">ED. SAÚDE</span></td><td>NPC3 — Extensão 1</td><td>Ação comunitária (ILPI, praças, ONGs)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="month-header">JUNHO / JULHO 2026</div>
+  <table class="uni-table">
+    <thead>
+      <tr>
+        <th style="width:80px;">Data</th>
+        <th style="width:30px;"></th>
+        <th style="width:110px;">Disciplina</th>
+        <th style="width:110px;">Avaliação</th>
+        <th>Conteúdo Principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>05/06 Sex</td><td>⬜</td><td><span class="disc-tag tag-pato">PATOLOGIA</span></td><td>Sem. NPC3</td><td>Neoplasia III — Metástase</td></tr>
+      <tr><td>11/06 Sex</td><td>⬜</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>Sem. (NPC2)</td><td>Tumores</td></tr>
+      <tr><td>12/06 Sex</td><td>⬜</td><td><span class="disc-tag tag-educ">ED. SAÚDE</span></td><td>NPC3 — Extensão 2</td><td>Ação educativa em escola — PSE</td></tr>
+      <tr><td>15/06 Seg</td><td>⬜</td><td><span class="disc-tag tag-epid">EPIDEMIO</span></td><td>NPC2 — Prova</td><td>Epid. descritiva · Metodologia · Vigilância</td></tr>
+      <tr><td>16/06 Ter</td><td>⬜</td><td><span class="disc-tag tag-af1">AF1 ANAT</span></td><td>3º NPC Teórica</td><td>Sistema Endócrino</td></tr>
+      <tr><td>18/06 Qui</td><td>⬜</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>Sem. (NPC2)</td><td>Hipersensibilidade</td></tr>
+      <tr><td>19/06 Sex</td><td>⬜</td><td><span class="disc-tag tag-pato">PATOLOGIA</span></td><td>Sem. NPC3</td><td>Distúrbios Hemodinâmicos II</td></tr>
+      <tr><td>22/06 Seg</td><td>⬜</td><td><span class="disc-tag tag-epid">EPIDEMIO</span></td><td>NPC3 — Trabalho</td><td>Entrega trabalho escrito final</td></tr>
+      <tr><td>23/06 Ter</td><td>⬜</td><td><span class="disc-tag tag-af1">AF1 ANAT</span></td><td>4º NPC Prática</td><td>Endócrino — peças anatômicas</td></tr>
+      <tr class="crit-row"><td><strong>24/06 Qua</strong></td><td>🔥</td><td><span class="disc-tag tag-af1">AF1 FISIO</span></td><td><strong>5º NPC</strong></td><td>Endócrino + Gonadal</td></tr>
+      <tr class="crit-row"><td><strong>25/06 Qui</strong></td><td>🔥</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>Sem. (NPC2)</td><td>Imunoprofilaxia</td></tr>
+      <tr class="crit-row"><td><strong>25/06 Qui</strong></td><td>🔥</td><td><span class="disc-tag tag-af1">AF1 BIO</span></td><td>II Chamada</td><td>Reposição</td></tr>
+      <tr class="crit-row"><td><strong>26/06 Sex</strong></td><td>🔥</td><td><span class="disc-tag tag-pato">PATOLOGIA</span></td><td><strong>NPC2 — Prova</strong></td><td>Inflamação · Reparo · Neoplasias · Hemodinâmica</td></tr>
+      <tr class="crit-row"><td><strong>26/06 Sex</strong></td><td>🔥</td><td><span class="disc-tag tag-educ">ED. SAÚDE</span></td><td>NPC3 — Extensão 3</td><td>Ação em UAPS</td></tr>
+      <tr class="nef-row"><td>29/06 Seg</td><td>📋</td><td><span class="disc-tag tag-epid">EPIDEMIO</span></td><td>NEF</td><td>—</td></tr>
+      <tr><td>30/06 Ter</td><td>⬜</td><td><span class="disc-tag tag-af1">AF1 ANAT</span></td><td>II Chamada</td><td>Reposição</td></tr>
+      <tr><td>01/07 Qua</td><td>⬜</td><td><span class="disc-tag tag-af1">AF1 FISIO</span></td><td>II Chamada</td><td>Reposição</td></tr>
+      <tr><td>02/07 Qui</td><td>⬜</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>NP2 — Final</td><td>Prova formal — todo conteúdo pós-NP1</td></tr>
+      <tr class="nef-row"><td>03/07 Sex</td><td>📋</td><td><span class="disc-tag tag-pato">PATOLOGIA</span></td><td>NEF</td><td>—</td></tr>
+      <tr class="nef-row"><td>03/07 Sex</td><td>📋</td><td><span class="disc-tag tag-educ">ED. SAÚDE</span></td><td>Relatórios + NEF</td><td>Socialização das atividades extensionistas</td></tr>
+      <tr class="nef-row"><td>06–08/07</td><td>📋</td><td><span class="disc-tag tag-af1">AF1</span></td><td>NEF — Avaliação Final</td><td>Todas as subáreas</td></tr>
+      <tr class="nef-row"><td>09/07 Qui</td><td>📋</td><td><span class="disc-tag tag-imuno">IMUNOLOGIA</span></td><td>NEF</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center;margin-top:28px;padding:18px;background:#f0f2f8;border-radius:10px;">
+    <p style="font-size:9.5pt;font-weight:700;color:#1a1a2e;letter-spacing:1px;">TÉRMINO DO PERÍODO LETIVO: 09 DE JULHO DE 2026</p>
+    <p style="font-size:7.5pt;color:#6b7280;margin-top:4px;">UECE · Centro de Ciências da Saúde · Medicina 2026.1 · Documento atualizado em 15/04/2026</p>
+  </div>
+</div>
+
+</body>
+</html>
